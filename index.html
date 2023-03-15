@@ -1,28 +1,39 @@
+<body></body>
 <script>
+
+const gifURL = 'https://netart.rocks/images/butterfly.gif'
+const gifWidth = 50
+const gifHeight = 50
+const overlapX = 0.3
+const overlapY = 0.25
+const offsetX = (gifWidth/2)
+const columns = window.innerWidth / (gifWidth * overlapX) 
+const rows = window.innerHeight / (gifHeight * overlapY) * 0.75
+
+
   
-  const gifURL = 'https://netart.rocks/images/butterfly.gif'
-  const gifWidth = 50
-  const gifHeight = 50
-  const gifOffsetX = 50
-  
-  function createGif(x, y) {
-    const gif = document.createElement('img')
-    gif.src = gifURL
-    document.body.appendChild(gif)
-    gif.style.width = gifWidth + 'px'
-    gif.style.height = gifHeight +'px'
-    gif.style.position = 'absolute' //"absolute designates zero pixels from the left, zero pixels from the top//
-    gif.style.left = x + 'px'
-    gif.style.top = y + 'px'
+function createGif(x, y){
+  	const gif = document.createElement('img')
+  	gif.src = gifURL
+  	document.body.appendChild(gif)
+  	gif.style.width = gifWidth + 'px'
+  	gif.style.height = gifHeight + 'px'
+  	gif.style.position = 'absolute'
+  	gif.style.left = x + 'px'
+  	gif.style.top = y + 'px'
   }
   
-  function setup () {
-		for (let c = 0; c < 10; c++){
-      const x = c * gifWidth - gifOffsetX
-      const y = 0
-      createGif(x, y)
-      
-  } } 
+function setup () {
+  document.body.style.overflow = 'hidden'
+  for (let r = 0; r < rows; r++) {
+     for (let c = 0; c < columns; c++) {
+    const x = (c * gifWidth * overlapX) - offsetX ;
+    const y = (r * gifHeight * overlapY)
+    createGif(x, y)
+     }
+  }
+    
+}
   
 window.addEventListener('load', setup)
   
