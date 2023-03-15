@@ -3,10 +3,10 @@
 
 const gifURL = 'https://web.archive.org/web/20040229165843im_/http://www.heathersanimations.com/dinosaur/anim033.gif'
 const gif2URL = 'https://web.archive.org/web/20040229165843im_/http://www.heathersanimations.com/dinosaur/alligator.gif'
-const gifWidth = 150
-const gifHeight = 150
-const overlapX = 0.3
-const overlapY = 0.7
+const gifWidth = 100
+const gifHeight = 100
+const overlapX = 0.5
+const overlapY = 0.5
 const offsetX = (gifWidth/2)
 const columns = window.innerWidth / (gifWidth * overlapX) 
 const rows = window.innerHeight / (gifHeight * overlapY) * 0.75
@@ -16,28 +16,22 @@ const rows = window.innerHeight / (gifHeight * overlapY) * 0.75
 function createGif(x, y){
   	let chance = Math.floor(Math.random() * 50)
   	const gif = document.createElement('img')
+    document.body.style.backgroundColor = 'violet'
       if (chance > 25){
       	gif.src = gifURL
+      	gif.style.backdropFilter = 'blur(6px)'
+     		gif.style.backdropFilter = 'hue-rotate(30deg)'
    				 }else{
-      gif.src = gif2URL
-    }
-  
-   if (chance > 25){
-      	gif.style.backdropFilter = 'blur(2px)'
-     	gif.style.backdropFilter = 'hue-rotate(60deg)'
-   				 }else{
-      gif.style.backdropFilter = 'hue-rotate(120deg)'
-      gif.style.backdropFilter = 'invert(120%)'
+      	gif.src = gif2URL
+        gif.style.backdropFilter = 'hue-rotate(120deg)'
+      	gif.style.backdropFilter = 'invert(120%)'
     }
   	document.body.appendChild(gif)
   	gif.style.width = gifWidth + 'px'
   	gif.style.height = gifHeight + 'px'
   	gif.style.position = 'absolute'
   	gif.style.left = x + 'px'
-  	gif.style.top = y + 'px'
-  	
-  	
-  	
+  	gif.style.top = y + 'px'	
   }
  
   
@@ -45,7 +39,7 @@ function setup () {
   document.body.style.overflow = 'hidden'
     for (let r = 0; r < rows; r++) {
     	for (let c = 0; c < columns; c++) {
-    		const x = (c * gifWidth * overlapX) - offsetX ;
+    		const x = (c  * gifWidth * overlapX) - offsetX ;
    		  const y = (r * gifHeight * overlapY);
    		 createGif(x, y)
      }
