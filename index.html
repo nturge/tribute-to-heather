@@ -21,12 +21,23 @@ function createGif(x, y){
    				 }else{
       gif.src = gif2URL
     }
+  
+   if (chance > 25){
+      	gif.style.backdropFilter = 'blur(1px)'
+     	gif.style.backdropFilter = 'hue-rotate(60deg)'
+   				 }else{
+      gif.style.backdropFilter = 'hue-rotate(120deg)'
+      gif.style.backdropFilter = 'invert(120%)'
+    }
   	document.body.appendChild(gif)
   	gif.style.width = gifWidth + 'px'
   	gif.style.height = gifHeight + 'px'
   	gif.style.position = 'absolute'
   	gif.style.left = x + 'px'
   	gif.style.top = y + 'px'
+  	
+  	
+  	
   }
  
   
