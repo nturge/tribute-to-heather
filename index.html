@@ -16,7 +16,7 @@ const rows = window.innerHeight / (gifHeight * overlapY) * 0.75
 function createGif(x, y){
   	let chance = Math.floor(Math.random() * 50)
   	const gif = document.createElement('img')
-    document.body.style.backgroundColor = 'violet'
+    document.body.style.backgroundColor = 'brown'
       if (chance > 25){
       	gif.src = gifURL
       	gif.style.backdropFilter = 'blur(6px)'
